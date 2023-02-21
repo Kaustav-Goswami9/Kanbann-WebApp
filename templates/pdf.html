@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>PDF</title>
+</head>
+
+<body>
+    <h2> Hi, {{user.username}}</h2><br>
+    Here is your monthly report for the month of {{month}}.
+    <h3><strong>Account details:</strong></h3>
+    <strong>Email:</strong> {{user.email}} <br>
+    <strong>Last Logged on:</strong> {{user.logged | replace("T", " ")}} <br><br>
+
+    {% if list_info|length == 0 %}
+    <h3>You have not created any lists yet.</h3>
+    {% else %}
+    <h2 class="text-center"><strong>List details</strong></h2><br>
+    <table class="table table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>List id</th>
+                <th>List Name</th>
+                <th>Description</th>
+                <th>Number of cards under this list</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lt in list_info %}
+            <tr>
+                <td>{{ lt.list_id }}</td>
+                <td>{{ lt.name }}</td>
+                <td>{{ lt.description }}</td>
+                <td>{{ lt.cards|length }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+
+    {% if cards|length != 0 %}
+    <h2 class="text-center"><strong>Card details</strong></h2><br>
+    <table class="table table-striped table-sm">
+        <thead class="table-light">
+            <tr>
+                <th>List Id</th>
+                <th>Card Name</th>
+                <th>Content</th>
+                <th>Last updated on</th>
+                <th>Deadline</th>
+                <th>Completed on</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for card in cards %}
+            <tr>
+                <td>{{ card.list_id }}</td>
+                <td>{{ card.title }}</td>
+                <td>{{ card.content }}</td>
+                <td>{{ card.updated | replace("T", " ") }}</td>
+                <td>{{ card.deadline | replace("T", " ") }}</td>
+                <td>{{ card.completed | replace("T", " ") }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    {% endif %}
+    <br>
+    <strong>Thank You for using the service. Have a great Day.</strong>
+</body>
+
+</html>

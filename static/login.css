@@ -1,0 +1,8 @@
+div.card {
+    background-color: rgb(98, 90, 90);
+    transform: translate(115%, 53%);
+}
+
+.card-body {
+    box-shadow: 10px 10px 5px rgb(107, 114, 117);
+}

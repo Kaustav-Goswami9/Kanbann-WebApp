@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Daily reminder</title>
+</head>
+
+<body>
+    <h2> Hi, {{username}}</h2>
+    <span>
+        This is an auto-generated mail to remind you that you have {{data.incomplete}} tasks incomplete and
+        {{data.overdue}} are over-due among them.
+        {% if data.overdue == 0 %}
+        Keep it up 👍.
+        {% else %}
+        <strong>Try to complete them as soon as possible.</strong>
+        {% endif %}
+        <br><br>
+        <h4>Thank you</h4>
+    </span>
+</body>
+
+</html>
