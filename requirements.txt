@@ -1,7 +1,9 @@
 flask
+flask-caching
 flask-login
 flask-restful
 flask-sqlalchemy
 matplotlib
 weasyprint
 celery[redis]
+smtplib
